@@ -75,6 +75,79 @@ class Solution {
 
 
 
+### 最长特殊序列Ⅱ
+
+给定字符串列表 `strs` ，返回其中 **最长的特殊序列** 的长度。如果最长特殊序列不存在，返回 `-1` 。
+
+**特殊序列** 定义如下：该序列为某字符串 **独有的子序列（即不能是其他字符串的子序列）**。
+
+ `s` 的 **子序列**可以通过删去字符串 `s` 中的某些字符实现。
+
+- 例如，`"abc"` 是 `"aebdc"` 的子序列，因为您可以删除`"aebdc"`中的下划线字符来得到 `"abc"` 。`"aebdc"`的子序列还包括`"aebdc"`、 `"aeb"` 和 "" (空字符串)。
+
+**示例 1：**
+
+```
+输入: strs = ["aba","cdc","eae"]
+输出: 3
+```
+
+**示例 2:**
+
+```
+输入: strs = ["aaa","aaa","aa"]
+输出: -1
+```
+
+**提示:**
+
+- `2 <= strs.length <= 50`
+- `1 <= strs[i].length <= 10`
+- `strs[i]` 只包含小写英文字母
+
+**解析**
+
+```java
+class Solution {
+    public int findLUSlength(String[] strs) {
+        int n = strs.length;
+        int ans = -1;
+        // 使用一个双重循环，外层枚举每一个字符串 str[i] 作为特殊序列，内层枚举每一个字符串 str[j]，判断 str[i] 是否不为 str[j] 的子序列即可。
+        for (int i = 0; i < n; ++i) {
+            boolean check = true;
+            for (int j = 0; j < n; ++j) {
+                if (i != j && isSubseq(strs[i], strs[j])) {
+                    check = false;
+                    break;
+                }
+            }
+            if (check) {
+                // 在所有满足isSubSeq方法的strs[i]中选择最长的一个作为答案，如果不满足，则返回-1
+                ans = Math.max(ans, strs[i].length());
+            }
+        }
+        return ans;
+    }
+
+    public boolean isSubseq(String s, String t) {
+        // 定义两个指针
+        int ptS = 0, ptT = 0;
+        // 两个指针指向的位置要小于两个字符串的长度
+        while (ptS < s.length() && ptT < t.length()) {
+            // 两个指针对s、t两个字符串一位接一位的比对
+            // 如果两个比对的字符当前位都相同则都往右移动一位
+            // 如果ptT指针向右移动则表示匹配失败
+            if (s.charAt(ptS) == t.charAt(ptT)) {
+                ++ptS;
+            }
+            ++ptT;
+        }
+        // 判断ptS指针是否遍历了整个字符串，如果是则代表字符串s是字符串t的子序列
+        return ptS == s.length();
+    }
+}
+```
+
 
 
 
@@ -124,7 +197,7 @@ addressId 是该表的主键（具有唯一值的列）。
 
 以 **任意顺序** 返回结果表。
 
-- 解析
+**解析**
 
 本题关键点在于“如果 `personId` 的地址不在 `Address` 表中，则显示`null`”，由此可以想到 **left join 左外连接**去查询，把person表当左表，address当右表，左表的数据全部显示，右表显示符合搜索条件的记录。
 
@@ -155,7 +228,7 @@ from person p left join address a on p.personId = a.personId
 
 查询并返回 `Employee` 表中第二高的薪水 。如果不存在第二高的薪水，查询应该返回 `null(Pandas 则返回 None)` 。
 
-- 解析
+**解析**
 
 1. 首先考虑重复问题，则需要使用 `distinct` 来去除重复
 2. 第二高可以使用 `limit 1 offset 1` 来实现返回第二高的数据
@@ -168,5 +241,41 @@ select ifnull(
      order by salary desc
      limit 1,1)
     ,null) as SecondHighestSalary
+```
+
+
+
+### 第N高的薪水
+
+表: `Employee`
+
+```
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| id          | int  |
+| salary      | int  |
++-------------+------+
+在 SQL 中，id 是该表的主键。
+该表的每一行都包含有关员工工资的信息。
+```
+
+查询 `Employee` 表中第 `n` 高的工资。如果没有第 `n` 个最高工资，查询结果应该为 `null` 。
+
+**解析**
+
+```mysql
+CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+BEGIN
+DECLARE M INT;
+  # mysql索引从0开始，所以减一
+  SET M = N - 1;
+  RETURN (
+    select distinct salary
+     from Employee
+     order by salary desc
+     limit M,1
+  );
+END
 ```
 
