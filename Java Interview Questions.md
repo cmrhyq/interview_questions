@@ -15,7 +15,17 @@
 
 ### java中的基本数据类型
 
-​		byte、short、int、long、float、double、char、boolean
+| 数据类型     | 初始值  |      |
+| ------------ | ------- | ---- |
+| byte         | 0       |      |
+| short        | 0       |      |
+| int          | 0       |      |
+| long         | 0L      |      |
+| float        | 'u0000' |      |
+| double       | 0.0f    |      |
+| char         | 0       |      |
+| boolean      | false   |      |
+| 所有引用类型 | null    |      |
 
 
 
@@ -152,6 +162,8 @@
 
 
 
+
+
 ## 二、Java框架
 
 
@@ -179,6 +191,10 @@
 ### 描述一下JVM加载class文件的原理机制?
 
 JVM中类的装载是由 ClassLoader 和它的子类来实现的, Java ClassLoader 是一个重要的Java运行时系统组件。它负责在运行时查找和装入类文件的类。
+
+
+
+
 
 
 
