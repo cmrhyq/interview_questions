@@ -160,13 +160,23 @@
               "icon": "calendar-with-checkmark",
               "title": "Timeline"
             }
+          },
+          {
+            "id": "c4ab0fcdaf328084",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 484.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -177,10 +187,11 @@
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "obsidian-day-planner:Open Timeline": false,
-      "obsidian-day-planner:Open Multi-Day View": false
+      "obsidian-day-planner:Open Multi-Day View": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "2cd2c1a68cb1122c",
+  "active": "356bedce021deb21",
   "lastOpenFiles": [
     "Database Interview Questions.md",
     "Java Interview Questions.md",
