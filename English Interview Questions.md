@@ -10,12 +10,23 @@ To fix this, we did two things: First, we manually added the missing orders on t
 ```
 
 2. What is your team（team structure/member/size）? 你们的 团队结构/成员/规模 是怎么样
+```
+
+```
 
 3. What is the testing（testing process/life circles）? 测试流程/生命周期 是怎么样的
+```
+
+```
 
 4. How much do you know about the cloud? 你对 云 的了解有多少
+```
+I am familiar with Alibaba Cloud and Tencent Cloud, and am currently taking Amazon Cloud-related certifications.
 
-5. What are the technology skill you are most（familiar/good at/special in）? 你最 熟悉/擅长/最擅长 的技术技能是什么
+我熟悉阿里云和腾讯云，并且正在考取亚马逊的云相关的证书
+```
+
+4. What are the technology skill you are most（familiar/good at/special in）? 你最 熟悉/擅长/最擅长 的技术技能是什么
 ```
 I familiar automation and common testing techniques, be familiar with testing tools such as Apifox and Jmeter, be familiar in development technologies such as Java, Python, Vue, React, familiar SQL language and database knowledge, familiar Linux and Docker, and be familiar in using Git for version control.
 
